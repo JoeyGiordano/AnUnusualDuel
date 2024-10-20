@@ -1,0 +1,22 @@
+[gd_scene load_steps=2 format=3 uid="uid://bn5ejiljdkkwe"]
+
+[ext_resource type="Script" path="res://game_container/switch_to_scene.gd" id="1_dulpl"]
+
+[node name="CutScene" type="Node"]
+
+[node name="CutSceneOverButton" type="Button" parent="."]
+offset_right = 128.0
+offset_bottom = 31.0
+text = "[CutSceneOver]"
+script = ExtResource("1_dulpl")
+switch_to = 5
+
+[node name="THIS SCENE IS TEMP" type="Label" parent="."]
+offset_left = 142.0
+offset_top = 130.0
+offset_right = 1148.0
+offset_bottom = 294.0
+text = "Cut Scene
+Two silohouttes take a few steps towards each other. [they are now face to face] 
+They exchange guns.
+Both take a step backwards."

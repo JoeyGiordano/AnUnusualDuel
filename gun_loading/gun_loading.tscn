@@ -1,0 +1,206 @@
+[gd_scene load_steps=24 format=3 uid="uid://brihhvr3e0dtq"]
+
+[ext_resource type="Script" path="res://gun_loading/gun_loading.gd" id="1_gsiao"]
+[ext_resource type="PackedScene" uid="uid://cs3hmbnmpxkak" path="res://gun_loading/cartridge/cartridge.tscn" id="2_4gpww"]
+[ext_resource type="PackedScene" uid="uid://bnk5tvenau44m" path="res://gun_loading/chamber/chamber.tscn" id="3_2u27a"]
+[ext_resource type="Texture2D" uid="uid://dcscmfaf2h7sg" path="res://gun_loading/sprites/gun.png" id="4_safga"]
+[ext_resource type="Texture2D" uid="uid://bx11ddfudgovd" path="res://gun_loading/sprites/TableBackground.png" id="5_stbje"]
+[ext_resource type="Texture2D" uid="uid://c33fwsa4vy1j3" path="res://gun_loading/sprites/LoadText.png" id="6_vralh"]
+[ext_resource type="AudioStream" uid="uid://bxbviq3rwn5g1" path="res://gun_loading/confirm.mp3" id="7_7emw5"]
+[ext_resource type="AudioStream" uid="uid://d12s2oi7361no" path="res://gun_loading/load.mp3" id="8_ee4er"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_q8jdp"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_lnaq0"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ceqcr"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_j63tk"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_hcw2l"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1gd7l"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qk1at"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ltyyb"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_not3h"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fuqfq"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_y1oow"]
+
+[sub_resource type="Animation" id="Animation_hx2wb"]
+resource_name = "confirm"
+length = 3.0
+tracks/0/type = "audio"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SoundEffects")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"clips": [{
+"end_offset": 13.1638,
+"start_offset": 5.6997,
+"stream": ExtResource("7_7emw5")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/0/use_blend = true
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1.53333),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"next_scene"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_8mcd2"]
+resource_name = "load"
+tracks/0/type = "audio"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SoundEffects")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"clips": [{
+"end_offset": 8.695,
+"start_offset": 0.3775,
+"stream": ExtResource("8_ee4er")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/0/use_blend = true
+
+[sub_resource type="Animation" id="Animation_jl8un"]
+resource_name = "unload"
+length = 11.0
+tracks/0/type = "audio"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SoundEffects")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"clips": [{
+"end_offset": 17.7061,
+"start_offset": 2.3768,
+"stream": ExtResource("7_7emw5")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/0/use_blend = true
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_a6t0b"]
+_data = {
+"confirm": SubResource("Animation_hx2wb"),
+"load": SubResource("Animation_8mcd2"),
+"unload": SubResource("Animation_jl8un")
+}
+
+[node name="GunLoading" type="Node2D" node_paths=PackedStringArray("chambers")]
+script = ExtResource("1_gsiao")
+num_cartridges = 5
+chambers = [NodePath("Chambers/Chamber1"), NodePath("Chambers/Chamber2"), NodePath("Chambers/Chamber3"), NodePath("Chambers/Chamber4"), NodePath("Chambers/Chamber5"), NodePath("Chambers/Chamber6")]
+
+[node name="Cartridges" type="Node2D" parent="."]
+position = Vector2(-16, 92)
+
+[node name="Cartridge1" parent="Cartridges" instance=ExtResource("2_4gpww")]
+position = Vector2(997, 75)
+
+[node name="Cartridge2" parent="Cartridges" instance=ExtResource("2_4gpww")]
+position = Vector2(997, 158)
+
+[node name="Cartridge3" parent="Cartridges" instance=ExtResource("2_4gpww")]
+position = Vector2(997, 239)
+
+[node name="Cartridge4" parent="Cartridges" instance=ExtResource("2_4gpww")]
+position = Vector2(997, 322)
+
+[node name="Cartridge5" parent="Cartridges" instance=ExtResource("2_4gpww")]
+position = Vector2(997, 411)
+
+[node name="Chambers" type="Node2D" parent="."]
+position = Vector2(-96, -4)
+
+[node name="Chamber1" parent="Chambers" instance=ExtResource("3_2u27a")]
+position = Vector2(534, 263)
+
+[node name="Chamber2" parent="Chambers" instance=ExtResource("3_2u27a")]
+position = Vector2(594, 301)
+chamber_num = 2
+
+[node name="Chamber3" parent="Chambers" instance=ExtResource("3_2u27a")]
+position = Vector2(594, 371)
+chamber_num = 3
+
+[node name="Chamber4" parent="Chambers" instance=ExtResource("3_2u27a")]
+position = Vector2(535, 411)
+chamber_num = 4
+
+[node name="Chamber5" parent="Chambers" instance=ExtResource("3_2u27a")]
+position = Vector2(476, 371)
+chamber_num = 5
+
+[node name="Chamber6" parent="Chambers" instance=ExtResource("3_2u27a")]
+position = Vector2(476, 301)
+chamber_num = 6
+
+[node name="GunSprite" type="Sprite2D" parent="."]
+z_index = -3
+position = Vector2(260, 281)
+scale = Vector2(3, 3)
+texture = ExtResource("4_safga")
+
+[node name="TableBackground" type="Sprite2D" parent="."]
+z_index = -4
+position = Vector2(574, 326)
+scale = Vector2(3, 3)
+texture = ExtResource("5_stbje")
+
+[node name="UI" type="CanvasLayer" parent="."]
+layer = 9
+
+[node name="DoneButton" type="Button" parent="UI"]
+offset_left = 286.0
+offset_top = 550.0
+offset_right = 872.0
+offset_bottom = 628.0
+theme_override_styles/focus = SubResource("StyleBoxEmpty_q8jdp")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_lnaq0")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_ceqcr")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_j63tk")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_hcw2l")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_1gd7l")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_qk1at")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_ltyyb")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_not3h")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_fuqfq")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_y1oow")
+
+[node name="LoadText" type="Sprite2D" parent="."]
+position = Vector2(566, 339)
+scale = Vector2(3, 3)
+texture = ExtResource("6_vralh")
+
+[node name="SoundEffects" type="AudioStreamPlayer2D" parent="."]
+volume_db = 12.831
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_a6t0b")
+}
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(577, 325)

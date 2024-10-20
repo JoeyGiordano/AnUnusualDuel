@@ -1,0 +1,91 @@
+[gd_scene load_steps=10 format=3 uid="uid://dajeyyd76x0vu"]
+
+[ext_resource type="Script" path="res://game_container/game_container.gd" id="1_nfc83"]
+[ext_resource type="PackedScene" uid="uid://dd71ltua8vpqj" path="res://static_scenes/main_menu.tscn" id="1_ojqp2"]
+[ext_resource type="AudioStream" uid="uid://chivyyo68br14" path="res://gun_loading/loading_backing.mp3" id="3_yb5tj"]
+[ext_resource type="AudioStream" uid="uid://75mjtc2t1vfy" path="res://game/GameplayTrack.mp3" id="4_nkufq"]
+[ext_resource type="AudioStream" uid="uid://000mewaqmkks" path="res://cut_scene/cutscene_sound.mp3" id="4_nv75s"]
+
+[sub_resource type="Animation" id="Animation_sw3os"]
+resource_name = "cutscene"
+length = 20.0
+tracks/0/type = "audio"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AudioStreamPlayer2D")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 1.0355,
+"stream": ExtResource("4_nv75s")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/0/use_blend = true
+
+[sub_resource type="Animation" id="Animation_o3ub4"]
+resource_name = "gameplay"
+length = 237.5
+tracks/0/type = "audio"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AudioStreamPlayer2D")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("4_nkufq")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/0/use_blend = true
+
+[sub_resource type="Animation" id="Animation_85n1v"]
+resource_name = "loading"
+length = 48.0
+loop_mode = 1
+tracks/0/type = "audio"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AudioStreamPlayer2D")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("3_yb5tj")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/0/use_blend = true
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0ffs8"]
+_data = {
+"cutscene": SubResource("Animation_sw3os"),
+"gameplay": SubResource("Animation_o3ub4"),
+"loading": SubResource("Animation_85n1v")
+}
+
+[node name="GameContainer" type="Node"]
+script = ExtResource("1_nfc83")
+
+[node name="ActiveSceneHolder" type="Node" parent="."]
+
+[node name="MainMenu" parent="ActiveSceneHolder" instance=ExtResource("1_ojqp2")]
+
+[node name="OverlayPanels" type="Node" parent="."]
+
+[node name="Players" type="Node" parent="."]
+
+[node name="MusicAnim" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_0ffs8")
+}
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+volume_db = 8.78
