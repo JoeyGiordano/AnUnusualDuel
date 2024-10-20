@@ -17,7 +17,7 @@ func on_area_entered(area : Area2D) :
 	
 	if area.is_in_group("ladder") :
 		player.is_touching_ladder = true
-		player.ladder_x = area.position.x
+		player.ladder_x = area.get_child(0).global_position.x
 	
 func on_area_exited(area : Area2D) : 
 	if area.is_in_group("ladder") :
