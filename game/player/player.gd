@@ -2,6 +2,7 @@ extends CharacterBody2D
 class_name Player
 
 @onready var FlipX : Node2D = $FlipX
+@onready var Anim : AnimationPlayer = $AnimationPlayer
 
 @export var is_player1 : bool = true
 @export var is_facing_right : bool = true
