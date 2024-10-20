@@ -8,6 +8,7 @@ extends Node2D
 var cylinder : Array[bool] = [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1] #like the cylinder of a revolver (all the 1s are for debug)
 var cylinder_index : int = -1
 var gun_direction : Vector2 = Vector2(1,0)
+var is_reloaded : bool = true
 
 func _ready():
 	if GameContainer.GAME_CONTAINER : 
@@ -23,11 +24,12 @@ func _process(delta):
 	else : gun_direction = Vector2(-1,0)
 	
 func shoot() -> bool :
+	if !is_reloaded : return false
 	# attempts to shoot a bullet, returns whether a bullet was shot
 	cylinder_index += 1
 	# determine whether there is another bullet/if the bullet is a blank
 	if cylinder_index >= cylinder.size() : return false #out of bullets
-	elif !cylinder[cylinder_index] : return false #bullet is a blank
+	if !cylinder[cylinder_index] : return false #bullet is a blank 
 	
 	#shoot a bullet
 	var b = bullet.instantiate()
@@ -36,7 +38,14 @@ func shoot() -> bool :
 	b.position = global_position
 	b.velocity = bullet_speed * gun_direction
 	
+	player.get_node("ShootNoise").play()
+	player.Anim.play("reload") #will eventually call reload
+	is_reloaded = false
+	
 	return true
+
+func reload() :
+	is_reloaded = true
 
 func get_shoot_input() -> bool :
 	return Input.is_action_just_pressed(player.IN("shoot"))
