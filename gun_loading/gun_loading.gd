@@ -21,6 +21,10 @@ func _ready():
 func _process(delta):
 	update_button_state()
 	update_mouse_info()
+	
+	if Input.is_action_just_pressed("DEBUG_SKIP") :
+		cylinder = [1,0,1,1,1,1]
+		on_done_pressed()
 
 func update_mouse_info() :
 	mouse_was_down = mouse_down
@@ -60,21 +64,14 @@ func empty_chamber(ch : Chamber) :
 	chambers_full -= 1
 
 func on_done_pressed() :
-	#aimation calls next_scene
-	Anim.play("confirm")
-	
-func next_scene() :
-	#collect chamber info for cylinder array
 	for i in chambers.size() : cylinder.append(chambers[i].is_filled)
-	
+	#aimation in gamecontainer calls next_scene 
 	#go to the next scene (depends on which player is loading the gun)
 	if GameContainer.GAME_CONTAINER.is_player1_loading :
 		GameContainer.GAME_CONTAINER.cylinder1 = cylinder.duplicate()
 		GameContainer.GAME_CONTAINER.is_player1_loading = false
-		GameContainer.GAME_CONTAINER.switch_to_scene(GameContainer.GAME_CONTAINER.Scene.P2_READY)
+		GameContainer.GAME_CONTAINER.get_node("GunLoadAnim").play("confirm1")
 	else :
 		GameContainer.GAME_CONTAINER.is_player1_loading = true
 		GameContainer.GAME_CONTAINER.cylinder2 = cylinder.duplicate()
-		GameContainer.GAME_CONTAINER.switch_to_scene(GameContainer.GAME_CONTAINER.Scene.CUT_SCENE)
-	
-	
+		GameContainer.GAME_CONTAINER.get_node("GunLoadAnim").play("confirm2")

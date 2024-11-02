@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://dbg72dqyt7lpe"]
+[gd_scene load_steps=3 format=3 uid="uid://dbg72dqyt7lpe"]
 
 [ext_resource type="Script" path="res://game_container/switch_to_scene.gd" id="1_oq77d"]
+[ext_resource type="Texture2D" uid="uid://ul0o2i7205wl" path="res://static_scenes/Background.png" id="2_kspxi"]
 
 [node name="Credits" type="Node"]
 
@@ -21,9 +22,17 @@ text = "I'm ready."
 script = ExtResource("1_oq77d")
 switch_to = 3
 
+[node name="Background" type="Sprite2D" parent="."]
+z_index = -7
+position = Vector2(580, 325)
+scale = Vector2(3, 3)
+texture = ExtResource("2_kspxi")
+
 [node name="TEMP" type="Label" parent="."]
-offset_left = 144.0
-offset_top = 130.0
-offset_right = 308.0
-offset_bottom = 179.0
-text = "Player2 turn your back. Player1, prepare to load your weapon."
+offset_left = 254.0
+offset_top = 136.0
+offset_right = 887.0
+offset_bottom = 185.0
+theme_override_colors/font_color = Color(0, 0, 0, 0.721569)
+text = "Player2 (arrow keys) turn your back. Player1 (awsd), prepare to load your weapon."
+horizontal_alignment = 1

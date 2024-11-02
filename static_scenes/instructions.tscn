@@ -1,18 +1,34 @@
-[gd_scene load_steps=2 format=3 uid="uid://cltaghkxnswjy"]
+[gd_scene load_steps=3 format=3 uid="uid://cltaghkxnswjy"]
 
 [ext_resource type="Script" path="res://game_container/switch_to_scene.gd" id="1_4nwng"]
+[ext_resource type="Texture2D" uid="uid://ul0o2i7205wl" path="res://static_scenes/Background.png" id="2_qs788"]
 
 [node name="Instructions" type="Node"]
 
 [node name="BackButton" type="Button" parent="."]
-offset_right = 8.0
-offset_bottom = 8.0
+offset_left = 441.0
+offset_top = 547.0
+offset_right = 676.0
+offset_bottom = 597.0
 text = "Back"
 script = ExtResource("1_4nwng")
 
 [node name="TEMP" type="Label" parent="."]
-offset_left = 144.0
-offset_top = 130.0
-offset_right = 308.0
-offset_bottom = 179.0
-text = "Instructions"
+offset_left = 161.0
+offset_top = 47.0
+offset_right = 945.0
+offset_bottom = 226.0
+theme_override_colors/font_color = Color(0, 0, 0, 0.470588)
+text = "You had a disagreement. The kind words couldn't resolve, so you've turned to your pistols.
+Welcome to the wild west, I suppose. But the rules in this duel are... unusual.
+
+Bring your own pistol. Sixshot. Load five bullets ahead of time. Meet at sundown. But you don't 
+fight with your gun... and so you don't know where the blank is in the pistol you're fighting with. 
+No matter. You're the fastest draw in town, and you're not gonna lose. Even in... an unusual duel."
+horizontal_alignment = 1
+
+[node name="Background" type="Sprite2D" parent="."]
+z_index = -7
+position = Vector2(580, 325)
+scale = Vector2(3, 3)
+texture = ExtResource("2_qs788")

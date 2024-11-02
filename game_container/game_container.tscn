@@ -1,12 +1,14 @@
-[gd_scene load_steps=10 format=3 uid="uid://dajeyyd76x0vu"]
+[gd_scene load_steps=16 format=3 uid="uid://dajeyyd76x0vu"]
 
 [ext_resource type="Script" path="res://game_container/game_container.gd" id="1_nfc83"]
 [ext_resource type="PackedScene" uid="uid://dd71ltua8vpqj" path="res://static_scenes/main_menu.tscn" id="1_ojqp2"]
-[ext_resource type="AudioStream" uid="uid://chivyyo68br14" path="res://gun_loading/loading_backing.mp3" id="3_yb5tj"]
-[ext_resource type="AudioStream" uid="uid://75mjtc2t1vfy" path="res://game/GameplayTrack.mp3" id="4_nkufq"]
-[ext_resource type="AudioStream" uid="uid://000mewaqmkks" path="res://cut_scene/cutscene_sound.mp3" id="4_nv75s"]
+[ext_resource type="AudioStream" uid="uid://chivyyo68br14" path="res://gun_loading/audio/loading_backing.mp3" id="3_yb5tj"]
+[ext_resource type="AudioStream" uid="uid://75mjtc2t1vfy" path="res://game/audio/GameplayTrack.mp3" id="4_nkufq"]
+[ext_resource type="AudioStream" uid="uid://b4tajk6haud8" path="res://static_scenes/Title.mp3" id="5_b2min"]
+[ext_resource type="AudioStream" uid="uid://000mewaqmkks" path="res://cut_scene/cutscene_sound.mp3" id="6_d6s8u"]
+[ext_resource type="AudioStream" uid="uid://bxbviq3rwn5g1" path="res://gun_loading/audio/confirm.mp3" id="6_ilpf0"]
 
-[sub_resource type="Animation" id="Animation_sw3os"]
+[sub_resource type="Animation" id="Animation_mk0n5"]
 resource_name = "cutscene"
 length = 20.0
 tracks/0/type = "audio"
@@ -18,12 +20,29 @@ tracks/0/loop_wrap = true
 tracks/0/keys = {
 "clips": [{
 "end_offset": 0.0,
-"start_offset": 1.0355,
-"stream": ExtResource("4_nv75s")
+"start_offset": 0.3765,
+"stream": ExtResource("6_d6s8u")
 }],
 "times": PackedFloat32Array(0)
 }
 tracks/0/use_blend = true
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(14, 19.6667),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [5],
+"method": &"switch_to_scene"
+}, {
+"args": ["gameplay"],
+"method": &"play_track"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_o3ub4"]
 resource_name = "gameplay"
@@ -64,11 +83,103 @@ tracks/0/keys = {
 }
 tracks/0/use_blend = true
 
+[sub_resource type="Animation" id="Animation_i54v6"]
+resource_name = "title"
+length = 303.0
+tracks/0/type = "audio"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AudioStreamPlayer2D")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("5_b2min")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/0/use_blend = true
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_0ffs8"]
 _data = {
-"cutscene": SubResource("Animation_sw3os"),
+"cutscene": SubResource("Animation_mk0n5"),
 "gameplay": SubResource("Animation_o3ub4"),
-"loading": SubResource("Animation_85n1v")
+"loading": SubResource("Animation_85n1v"),
+"title": SubResource("Animation_i54v6")
+}
+
+[sub_resource type="Animation" id="Animation_bsdvx"]
+resource_name = "confirm1"
+length = 1.5
+tracks/0/type = "audio"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AudioFX")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"clips": [{
+"end_offset": 13.4381,
+"start_offset": 5.6997,
+"stream": ExtResource("6_ilpf0")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/0/use_blend = true
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.366667),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [8],
+"method": &"switch_to_scene"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_mdwda"]
+resource_name = "confirm2"
+length = 1.5
+tracks/0/type = "audio"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AudioFX")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"clips": [{
+"end_offset": 13.4381,
+"start_offset": 5.6997,
+"stream": ExtResource("6_ilpf0")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/0/use_blend = true
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.566667),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [4],
+"method": &"switch_to_scene"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_80le8"]
+_data = {
+"confirm1": SubResource("Animation_bsdvx"),
+"confirm2": SubResource("Animation_mdwda")
 }
 
 [node name="GameContainer" type="Node"]
@@ -88,4 +199,11 @@ libraries = {
 }
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
-volume_db = 8.78
+volume_db = 4.388
+
+[node name="GunLoadAnim" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_80le8")
+}
+
+[node name="AudioFX" type="AudioStreamPlayer2D" parent="."]

@@ -2,7 +2,8 @@ extends CharacterBody2D
 class_name Player
 
 @onready var FlipX : Node2D = $FlipX
-@onready var Anim : AnimationPlayer = $AnimationPlayer
+@onready var Sprite : Sprite2D = $FlipX/Sprite2D
+@onready var Guntip : Node2D= $FlipX/Guntip
 
 @export var is_player1 : bool = true
 @export var is_facing_right : bool = true
@@ -19,6 +20,7 @@ var is_recent_y_up : bool = false
 var is_touching_ladder : bool = false
 var ladder_x : float = 0
 var is_climbing_ladder : bool = false
+var alive : bool = true
 
 #####################
 ##### PROCESSES #####
@@ -26,12 +28,16 @@ var is_climbing_ladder : bool = false
 func _ready():
 	add_to_group("player")
 	flipX(is_facing_right)
+	if is_player1 : Sprite.frame_coords.y = 2
 
 func _physics_process(delta):
 	apply_gravity(delta)
-	handle_jump()
-	handle_x_movement()
-	handle_ladder()
+	if alive : 
+		handle_jump()
+		handle_x_movement()
+		handle_ladder()
+	else :
+		death_movement()
 	move_and_slide()
 
 ############################
@@ -75,12 +81,15 @@ func handle_ladder() :
 			velocity.y = y_in * LADDER_SPEED
 	elif Input.is_action_just_released(IN("ladderhold")) && y_in < 0 :
 		jump()
-		is_climbing_ladder = false
+		is_climbing_ladder = true #prevents second jump off top of ladder
 	elif is_climbing_ladder :
 		if x_in || y_in :
 			is_climbing_ladder = false
 			if y_in < 0 :
 				jump()
+
+func death_movement() :
+	velocity.x = move_toward(velocity.x, 0, SPEED_DECAY/10)
 
 func flipX(right : bool) :
 	if right :
@@ -89,7 +98,7 @@ func flipX(right : bool) :
 	else : 
 		is_facing_right = false
 		FlipX.scale.x = -1
-	
+
 ################
 ##### INPUT #####
 

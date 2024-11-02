@@ -1,18 +1,35 @@
-[gd_scene load_steps=2 format=3 uid="uid://bhuom4ivjp0be"]
+[gd_scene load_steps=3 format=3 uid="uid://bhuom4ivjp0be"]
 
 [ext_resource type="Script" path="res://game_container/switch_to_scene.gd" id="1_lxpdn"]
+[ext_resource type="Texture2D" uid="uid://ul0o2i7205wl" path="res://static_scenes/Background.png" id="2_6mii6"]
 
 [node name="Credits" type="Node"]
 
 [node name="BackButton" type="Button" parent="."]
-offset_right = 8.0
-offset_bottom = 8.0
+offset_left = 432.0
+offset_top = 536.0
+offset_right = 715.0
+offset_bottom = 600.0
 text = "Back"
 script = ExtResource("1_lxpdn")
 
 [node name="TEMP" type="Label" parent="."]
-offset_left = 144.0
-offset_top = 130.0
-offset_right = 308.0
-offset_bottom = 179.0
-text = "Credits"
+offset_left = 473.0
+offset_top = 51.0
+offset_right = 646.0
+offset_bottom = 230.0
+theme_override_colors/font_color = Color(0, 0, 0, 0.658824)
+text = "Credits
+
+Joey G
+Aidan H
+Mike VN
+
+Assorted Online Music"
+horizontal_alignment = 1
+
+[node name="Background" type="Sprite2D" parent="."]
+z_index = -7
+position = Vector2(580, 325)
+scale = Vector2(3, 3)
+texture = ExtResource("2_6mii6")

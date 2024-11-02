@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://blfoppm21wago"]
+[gd_scene load_steps=3 format=3 uid="uid://blfoppm21wago"]
 
 [ext_resource type="Script" path="res://game_container/switch_to_scene.gd" id="1_abywh"]
+[ext_resource type="Texture2D" uid="uid://ul0o2i7205wl" path="res://static_scenes/Background.png" id="2_fbqe2"]
 
 [node name="Credits" type="Node"]
 
@@ -23,8 +24,16 @@ script = ExtResource("1_abywh")
 switch_to = 3
 
 [node name="TEMP" type="Label" parent="."]
-offset_left = 144.0
+offset_left = 314.0
 offset_top = 130.0
-offset_right = 308.0
+offset_right = 793.0
 offset_bottom = 179.0
+theme_override_colors/font_color = Color(0, 0, 0, 0.592157)
 text = "Player1 turn your back. Player2, prepare to load your weapon."
+horizontal_alignment = 1
+
+[node name="Background" type="Sprite2D" parent="."]
+z_index = -7
+position = Vector2(580, 325)
+scale = Vector2(3, 3)
+texture = ExtResource("2_fbqe2")

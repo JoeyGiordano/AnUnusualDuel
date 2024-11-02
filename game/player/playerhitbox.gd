@@ -10,10 +10,13 @@ func _ready():
 func on_area_entered(area : Area2D) :
 	if area.is_in_group("bullet") :
 		area.destroy()
-		player.get_node("FlipX/Sprite2D").frame = 1
+		player.get_node("FlipX/Sprite2D").frame += 1
+		player.alive = false
+		player.velocity.x = -200 * sign(area.position.x - player.position.x)
 		await get_tree().create_timer(1).timeout
 		#TODO ^^REPLACE WITH ANIMATION
-		GameContainer.GAME_CONTAINER.switawdch_active_scene(GameContainer.GAME_CONTAINER.victory)
+		GameContainer.GAME_CONTAINER.switch_to_scene(GameContainer.GAME_CONTAINER.Scene.VICTORY)
+		return
 	
 	if area.is_in_group("ladder") :
 		player.is_touching_ladder = true

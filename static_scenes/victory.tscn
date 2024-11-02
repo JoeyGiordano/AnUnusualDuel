@@ -1,19 +1,29 @@
-[gd_scene load_steps=2 format=3 uid="uid://cby3remb66qik"]
+[gd_scene load_steps=3 format=3 uid="uid://cby3remb66qik"]
 
 [ext_resource type="Script" path="res://game_container/switch_to_scene.gd" id="1_mua0j"]
+[ext_resource type="Texture2D" uid="uid://ul0o2i7205wl" path="res://static_scenes/Background.png" id="2_u6wqn"]
 
 [node name="Victory" type="Node"]
 
 [node name="MainMenuButton" type="Button" parent="."]
-offset_right = 8.0
-offset_bottom = 8.0
-text = "MainMenu"
+offset_left = 454.0
+offset_top = 544.0
+offset_right = 705.0
+offset_bottom = 605.0
+text = "Main Menu"
 script = ExtResource("1_mua0j")
 
 [node name="TEMP" type="Label" parent="."]
-offset_left = 144.0
-offset_top = 130.0
-offset_right = 308.0
-offset_bottom = 179.0
-text = "Victory
-You fought a noble duel, but the most deceptive prevailed."
+offset_left = 342.0
+offset_top = 126.0
+offset_right = 794.0
+offset_bottom = 175.0
+theme_override_colors/font_color = Color(0, 0, 0, 0.576471)
+text = "You fought a noble duel, but the most deceptive prevailed."
+horizontal_alignment = 1
+
+[node name="Background" type="Sprite2D" parent="."]
+z_index = -7
+position = Vector2(580, 325)
+scale = Vector2(3, 3)
+texture = ExtResource("2_u6wqn")

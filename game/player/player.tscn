@@ -1,60 +1,19 @@
-[gd_scene load_steps=12 format=3 uid="uid://b2uoyxi2fgu7d"]
+[gd_scene load_steps=11 format=3 uid="uid://b2uoyxi2fgu7d"]
 
 [ext_resource type="Script" path="res://game/player/player.gd" id="1_r5qx5"]
-[ext_resource type="Texture2D" uid="uid://bt4skeev00tsk" path="res://game/sprites/Player.png" id="2_8imms"]
+[ext_resource type="Texture2D" uid="uid://3oy6qh0pe54u" path="res://game/sprites/cowboy.png" id="2_lfujq"]
 [ext_resource type="Script" path="res://game/player/playerhitbox.gd" id="3_34ojv"]
 [ext_resource type="Script" path="res://game/gun/gun.gd" id="3_ksudq"]
-[ext_resource type="AudioStream" uid="uid://hmmpp30xyurq" path="res://game/shot.mp3" id="5_lxf0b"]
-[ext_resource type="AudioStream" uid="uid://bcslpexj6p0hf" path="res://game/chamber-spin.wav" id="6_wj1qx"]
-[ext_resource type="AudioStream" uid="uid://daj1gm2wco561" path="res://game/reload.mp3" id="7_xamsd"]
+[ext_resource type="AudioStream" uid="uid://hmmpp30xyurq" path="res://game/audio/shot.mp3" id="5_lxf0b"]
+[ext_resource type="AudioStream" uid="uid://bcslpexj6p0hf" path="res://game/audio/chamber-spin.wav" id="6_wj1qx"]
+[ext_resource type="AudioStream" uid="uid://daj1gm2wco561" path="res://game/audio/reload.mp3" id="7_xamsd"]
+[ext_resource type="AudioStream" uid="uid://cvr1htjsgh54h" path="res://game/audio/blank.mp3" id="8_7jj7n"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_m07of"]
 size = Vector2(23, 37)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_eh1y2"]
 size = Vector2(27, 36)
-
-[sub_resource type="Animation" id="Animation_nqaj3"]
-resource_name = "reload"
-length = 3.0
-tracks/0/type = "audio"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("AudioStreamPlayer2D")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"clips": [{
-"end_offset": 0.0,
-"start_offset": 0.0,
-"stream": ExtResource("6_wj1qx")
-}, {
-"end_offset": 0.0,
-"start_offset": 0.0,
-"stream": ExtResource("7_xamsd")
-}],
-"times": PackedFloat32Array(0.433333, 1.63333)
-}
-tracks/0/use_blend = true
-tracks/1/type = "method"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("FlipX/Guntip")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(2.53333),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [],
-"method": &"reload"
-}]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_2wgup"]
-_data = {
-"reload": SubResource("Animation_nqaj3")
-}
 
 [node name="Player" type="CharacterBody2D"]
 collision_layer = 2
@@ -67,15 +26,15 @@ shape = SubResource("RectangleShape2D_m07of")
 [node name="FlipX" type="Node2D" parent="."]
 
 [node name="Sprite2D" type="Sprite2D" parent="FlipX"]
-scale = Vector2(2, 1.3)
-texture = ExtResource("2_8imms")
-hframes = 5
-vframes = 5
+scale = Vector2(3, 3)
+texture = ExtResource("2_lfujq")
+hframes = 4
+vframes = 4
 
 [node name="Guntip" type="Node2D" parent="FlipX"]
 position = Vector2(32, -4)
 script = ExtResource("3_ksudq")
-bullet_speed = 500.0
+bullet_speed = 650.0
 
 [node name="Hitbox" type="Area2D" parent="."]
 collision_layer = 2
@@ -86,12 +45,18 @@ script = ExtResource("3_34ojv")
 position = Vector2(0.5, 2)
 shape = SubResource("RectangleShape2D_eh1y2")
 
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+[node name="SpinNoise" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_wj1qx")
+volume_db = 11.885
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_2wgup")
-}
+[node name="ReloadNoise" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_xamsd")
+volume_db = 12.876
 
 [node name="ShootNoise" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("5_lxf0b")
+volume_db = 8.914
+
+[node name="EmptyNoise" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("8_7jj7n")
+volume_db = 17.333

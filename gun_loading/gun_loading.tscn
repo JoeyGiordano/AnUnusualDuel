@@ -6,8 +6,8 @@
 [ext_resource type="Texture2D" uid="uid://dcscmfaf2h7sg" path="res://gun_loading/sprites/gun.png" id="4_safga"]
 [ext_resource type="Texture2D" uid="uid://bx11ddfudgovd" path="res://gun_loading/sprites/TableBackground.png" id="5_stbje"]
 [ext_resource type="Texture2D" uid="uid://c33fwsa4vy1j3" path="res://gun_loading/sprites/LoadText.png" id="6_vralh"]
-[ext_resource type="AudioStream" uid="uid://bxbviq3rwn5g1" path="res://gun_loading/confirm.mp3" id="7_7emw5"]
-[ext_resource type="AudioStream" uid="uid://d12s2oi7361no" path="res://gun_loading/load.mp3" id="8_ee4er"]
+[ext_resource type="AudioStream" uid="uid://bxbviq3rwn5g1" path="res://gun_loading/audio/confirm.mp3" id="7_7emw5"]
+[ext_resource type="AudioStream" uid="uid://d12s2oi7361no" path="res://gun_loading/audio/load.mp3" id="8_ee4er"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_q8jdp"]
 

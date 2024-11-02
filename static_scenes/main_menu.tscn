@@ -1,35 +1,141 @@
-[gd_scene load_steps=2 format=3 uid="uid://dd71ltua8vpqj"]
+[gd_scene load_steps=37 format=3 uid="uid://dd71ltua8vpqj"]
 
 [ext_resource type="Script" path="res://game_container/switch_to_scene.gd" id="1_6s5mx"]
+[ext_resource type="Texture2D" uid="uid://ul0o2i7205wl" path="res://static_scenes/Background.png" id="2_lg5mt"]
+[ext_resource type="Texture2D" uid="uid://chfbrq73iq7gd" path="res://static_scenes/maintext.png" id="3_t5bxq"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ldljb"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7vexo"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_rs87l"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_65bd0"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jj3ap"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_mpbir"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_dxk53"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xmxsx"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_cpbm4"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_lurpk"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8u4ea"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_r8dlx"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_devy5"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ytcbj"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_gw0s8"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jka21"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_gxohv"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_c45ag"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qgt1j"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fqbra"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_f7pep"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ghh3d"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_olqmv"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wcb7y"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vjuka"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xby66"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_hjvb8"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_dfnyx"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jl5dp"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3f574"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ay07l"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_oovj0"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_o1n3h"]
 
 [node name="MainMenu" type="Node"]
 
 [node name="PlayButton" type="Button" parent="."]
-offset_right = 8.0
-offset_bottom = 8.0
-text = "Play"
+offset_left = 996.0
+offset_top = 236.0
+offset_right = 1150.0
+offset_bottom = 304.0
+theme_override_styles/focus = SubResource("StyleBoxEmpty_ldljb")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_7vexo")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_rs87l")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_65bd0")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_jj3ap")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_mpbir")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_dxk53")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_xmxsx")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_cpbm4")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_lurpk")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_8u4ea")
 script = ExtResource("1_6s5mx")
 switch_to = 7
 
 [node name="CreditsButton" type="Button" parent="."]
-offset_top = 115.0
-offset_right = 63.0
-offset_bottom = 146.0
-text = "Credits"
+offset_left = 927.0
+offset_top = 308.0
+offset_right = 1147.0
+offset_bottom = 373.0
+theme_override_styles/focus = SubResource("StyleBoxEmpty_r8dlx")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_devy5")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_ytcbj")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_gw0s8")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_jka21")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_gxohv")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_c45ag")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_qgt1j")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_fqbra")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_f7pep")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_ghh3d")
 script = ExtResource("1_6s5mx")
 switch_to = 1
 
 [node name="InstructionsButton" type="Button" parent="."]
-offset_top = 57.0
-offset_right = 101.0
-offset_bottom = 88.0
-text = "Instructions"
+offset_left = 806.0
+offset_top = 380.0
+offset_right = 1146.0
+offset_bottom = 441.0
+theme_override_styles/focus = SubResource("StyleBoxEmpty_olqmv")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_wcb7y")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_vjuka")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_xby66")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_hjvb8")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_dfnyx")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_jl5dp")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_3f574")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_ay07l")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_oovj0")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_o1n3h")
 script = ExtResource("1_6s5mx")
 switch_to = 2
 
-[node name="TEMP" type="Label" parent="."]
-offset_left = 144.0
-offset_top = 130.0
-offset_right = 308.0
-offset_bottom = 179.0
-text = "Main Menu"
+[node name="Background" type="Sprite2D" parent="."]
+z_index = -7
+position = Vector2(580, 325)
+scale = Vector2(3, 3)
+texture = ExtResource("2_lg5mt")
+
+[node name="Maintext" type="Sprite2D" parent="."]
+position = Vector2(554, 333)
+scale = Vector2(3, 3)
+texture = ExtResource("3_t5bxq")

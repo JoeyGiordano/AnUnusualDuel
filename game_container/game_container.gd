@@ -42,6 +42,7 @@ var cylinder2 : Array[bool]
 
 func _ready():
 	GAME_CONTAINER = self  #prepare the GAME_CONTAINER singleton (not an autoload)
+	$MusicAnim.play("title")
 	pass
 
 func _process(delta):
@@ -53,13 +54,11 @@ func _process(delta):
 func switch_to_scene(scene_enum : Scene) :
 	switch_active_scene(getSceneFromEnum(scene_enum))
 	if scene_enum == Scene.P1_READY : 
-		$MusicAnim.play("loading")
+		play_track("loading")
 	if scene_enum == Scene.CUT_SCENE :
-		$MusicAnim.stop()
-		$MusicAnim.play("cutscene")
-	if scene_enum == Scene.DUEL_STAGE : 
-		$MusicAnim.stop()
-		$MusicAnim.play("gameplay")
+		play_track("cutscene")
+	if scene_enum == Scene.VICTORY :
+		play_track("title")
 
 func switch_active_scene(scene : PackedScene) :
 	ActiveSceneHolder.get_child(0).queue_free()  #remove the old scene
@@ -81,3 +80,7 @@ func getSceneFromEnum(scene_enum : Scene) -> PackedScene:
 		_ : 
 			print("Scene not recognized")
 			return main_menu
+
+func play_track(track : String) :
+	$MusicAnim.stop()
+	$MusicAnim.play(track)
